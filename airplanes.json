@@ -1,0 +1,20 @@
+[
+  {
+    "id": "0037abeb-689b-4fbd-9170-5b98ca6100f4",
+    "manufacturer": "Boeing",
+    "model": "737",
+    "seats": 150
+  },
+  {
+    "id": "8aa3ec22-01ed-4cd7-b280-4fa34c260670",
+    "manufacturer": "Airbus",
+    "model": "A320",
+    "seats": 160
+  },
+  {
+    "id": "60d36741-8879-448c-a84a-af290d928cb7",
+    "manufacturer": "Airbus",
+    "model": "A380",
+    "seats": 525
+  }
+]
