@@ -2,7 +2,7 @@ package main
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	"os"
 )
 
 func FindAirplaneById(airplanes []airplane, id string) (int, airplane, bool) {
@@ -18,14 +18,20 @@ func FindAirplaneById(airplanes []airplane, id string) (int, airplane, bool) {
 func WriteAirplanesToFile(filename string, data []airplane) error {
 	jsonData, err := json.MarshalIndent(data, "", "  ")
 	if err != nil {
-		return nil
+		return err
 	}
 
-	return ioutil.WriteFile(filename, jsonData, 0644)
+	return os.WriteFile(filename, jsonData, 0644)
 }
 
 func ReadAirplanesFromFile(filename string) ([]airplane, error) {
-	data, err := ioutil.ReadFile(filename)
+	_, err := os.Stat(filename)
+
+	if os.IsNotExist(err) {
+		return []airplane{}, nil
+	}
+
+	data, err := os.ReadFile(filename)
 	if err != nil {
 		return nil, err
 	}
