@@ -1,8 +1,6 @@
 package main
 
-import (
-	"github.com/gin-gonic/gin"
-)
+import "github.com/gofiber/fiber/v2"
 
 type airplane struct {
 	ID           string `json:"id"`
@@ -13,13 +11,13 @@ type airplane struct {
 
 // Main
 func main() {
-	router := gin.Default()
+	app := fiber.New()
 
-	router.POST("/airplanes", CreateAirplane)
-	router.GET("/airplanes", GetAirplanes)
-	router.GET("/airplanes/:id", GetAirplaneById)
-	router.PUT("/airplanes/:id", UpdateAirplane)
-	router.DELETE("/airplanes/:id", DeleteAirplane)
+	app.Post("/airplanes", CreateAirplane)
+	app.Get("/airplanes", GetAirplanes)
+	app.Get("/airplanes/:id", GetAirplaneById)
+	app.Put("/airplanes/:id", UpdateAirplane)
+	app.Delete("/airplanes/:id", DeleteAirplane)
 
-	router.Run(":3300")
+	app.Listen(":3300")
 }
